@@ -1,0 +1,72 @@
+---
+$id: >-
+  https://raw.githubusercontent.com/billwanjohi/minizinc-input-data-schema/main/schema.yaml
+$schema: "http://json-schema.org/draft-07/schema"
+additionalProperties: false
+default: {}
+description: Known good data schema for minizinc
+examples:
+  - Customers:
+      - e: Customer A
+      - e: Customer B
+      - e: Customer C
+    distances:
+      - - 1
+        - 2
+        - 3
+      - - 4
+        - 5
+        - 6
+    n: 2
+    patterns:
+      - set:
+          - 1
+          - 3
+          - 5
+      - set:
+          - 2
+          - 4
+          - 6
+patternProperties:
+  # https://www.minizinc.org/doc-2.5.5/en/modelling.html#defblock-0
+  ^(in|intersect|not|subset|superset|union)$:
+    type: "null"
+  "^[a-zA-Z][a-zA-Z0-9_]*$":
+    anyOf:
+      - additionalItems: false
+        items:
+          type: array
+        type: array
+      - additionalItems: false
+        items:
+          type: integer
+        type: array
+      - additionalItems: false
+        items:
+          additionalProperties: false
+          properties:
+            e:
+              type: string
+          required:
+            - e
+          type: object
+        title: enum
+        type: array
+      - additionalItems: false
+        items:
+          additionalProperties: false
+          properties:
+            set:
+              additionalItems: false
+              type: array
+          required:
+            - set
+          type: object
+        title: set
+        type: array
+      - type: boolean
+      - type: integer
+      - type: string
+required: []
+title: The root schema
+type: object
