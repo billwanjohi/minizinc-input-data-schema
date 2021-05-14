@@ -1,0 +1,18 @@
+#+TITLE: MiniZinc Input Data Schema
+
+MiniZinc now [supports json](https://www.minizinc.org/doc-2.5.5/en/spec.html#json-support),
+but I couldn't find an official schema. This will be my evolving attempt at one. PRs welcome.
+
+* Development
+
+I use record query to validate and format the yaml, with some light edits:
+
+#+begin_src bash
+rq -yY < schema.yaml | sponge schema.yaml
+#+end_src
+
+I use yajsv to validate example data against it
+
+#+begin_src bash
+yajsv -s schema.yaml example-data.json
+#+end_src
