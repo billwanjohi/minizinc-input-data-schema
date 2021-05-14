@@ -1,6 +1,6 @@
 #+TITLE: MiniZinc Input Data Schema
 
-MiniZinc now [supports json](https://www.minizinc.org/doc-2.5.5/en/spec.html#json-support),
+MiniZinc now [[https://www.minizinc.org/doc-2.5.5/en/spec.html#json-support][supports JSON]],
 but I couldn't find an official schema. This will be my evolving attempt at one. PRs welcome.
 
 * Development
